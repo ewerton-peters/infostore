@@ -1,0 +1,111 @@
+<h2 class="contact__title">Entre em contato</h2>
+<section class="contact__container">
+    <form class="contact-form" [formGroup]="formContato">
+        <input 
+            type="text" 
+            placeholder="Digite seu nome" 
+            formControlName="nome"
+            [class.valid]="formContato.controls['nome'].valid"
+            [class.invalid]="formContato.controls['nome'].invalid &&
+            (formContato.controls['nome'].touched || formContato.controls['nome'].dirty)"
+        />
+        <div
+            *ngIf="formContato.controls['nome'].invalid &&
+            (formContato.controls['nome'].touched || formContato.controls['nome'].dirty)"
+        >
+            <small class="error-message" *ngIf="formContato.controls['nome'].hasError('minlength')">
+                Digite no mínimo 4 caracteres.
+            </small>
+            <small *ngIf="formContato.controls['nome'].hasError('required')">
+                Este campo precisa ser preenchido!
+            </small>
+        </div>
+
+        <input 
+            type="assunto" 
+            placeholder="Digite o assunto" 
+            formControlName="assunto"
+            [class.valid]="formContato.controls['assunto'].valid"
+            [class.invalid]="formContato.controls['assunto'].invalid &&
+            (formContato.controls['assunto'].touched || formContato.controls['assunto'].dirty)"
+        />
+        <div
+            *ngIf="formContato.controls['assunto'].invalid &&
+            (formContato.controls['assunto'].touched || formContato.controls['assunto'].dirty)"
+        >
+            <small class="error-message" *ngIf="formContato.controls['assunto'].hasError('minlength')">
+                Digite no mínimo 10 caracteres.
+            </small>
+            <small *ngIf="formContato.controls['assunto'].hasError('required')">
+                Este campo precisa ser preenchido!
+            </small>
+        </div>
+
+        <input 
+            type="tel" 
+            placeholder="(00) 0 0000-0000" mask="(00) 0 0000-0000"
+            formControlName="telefone"
+            [class.valid]="formContato.controls['telefone'].valid"
+            [class.invalid]="formContato.controls['telefone'].invalid &&
+            (formContato.controls['telefone'].touched || formContato.controls['telefone'].dirty)"
+        />
+        <div
+            *ngIf="formContato.controls['telefone'].invalid &&
+            (formContato.controls['telefone'].touched || formContato.controls['telefone'].dirty)"
+        >
+            <small class="error-message" *ngIf="formContato.controls['telefone'].hasError('minlength')">
+                Digite no mínimo 11 caracteres.
+            </small>
+            <small *ngIf="formContato.controls['telefone'].hasError('required')">
+                Este campo precisa ser preenchido!
+            </small>
+        </div>
+
+        <input 
+            type="email" 
+            placeholder="Digite seu e-mail"
+            formControlName="email"
+            [class.valid]="formContato.controls['email'].valid"
+            [class.invalid]="formContato.controls['email'].invalid &&
+            (formContato.controls['email'].touched || formContato.controls['email'].dirty)"    
+        />
+        <div
+            *ngIf="formContato.controls['email'].invalid &&
+            (formContato.controls['email'].touched || formContato.controls['email'].dirty)"
+        >
+            <small class="error-message" *ngIf="formContato.controls['email'].hasError('email')">
+                Digite um e-mail válido!
+            </small>
+            <small *ngIf="formContato.controls['email'].hasError('required')">
+                Este campo precisa ser preenchido!
+            </small>
+        </div>
+
+        <textarea 
+            maxlength="300" 
+            rows="5"
+            placeholder="Digite a mensagem..."
+            formControlName="mensagem"
+            [class.valid]="formContato.controls['mensagem'].valid"
+            [class.invalid]="formContato.controls['mensagem'].invalid &&
+            (formContato.controls['mensagem'].touched || formContato.controls['mensagem'].dirty)"
+        >
+        </textarea>
+        <div
+            *ngIf="formContato.controls['mensagem'].invalid &&
+            (formContato.controls['mensagem'].touched || formContato.controls['mensagem'].dirty)"
+        >
+            <small class="error-message" *ngIf="formContato.controls['mensagem'].hasError('minlength')">
+                Digite no mínimo 20 caracteres.
+            </small>
+            <small *ngIf="formContato.controls['mensagem'].hasError('required')">
+                Este campo precisa ser preenchido!
+            </small>
+        </div>
+        <button [disabled]="formContato.invalid" (click)="enviarForm()">Enviar</button>
+    </form>
+    <address>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.8972693999012!2d-49.81301073410502!3d-26.13489235609024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dd9328df3003e3%3A0x40b0931cb70c63b6!2sAv.%20Nereu%20Ramos%20-%20Mafra%2C%20SC%2C%2089300-000!5e0!3m2!1spt-BR!2sbr!4v1659636102949!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" frameborder="0"></iframe>
+        <p>Av. Nereu Ramos, Jardim do Moinho - Mafra-SC, 89300-000</p>
+    </address>
+</section>
